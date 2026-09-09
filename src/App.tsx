@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { sfx } from './utils/sounds';
-import { ShrinkTheSnake } from './components/ShrinkTheSnake';
+import { SaveThePrincess } from './components/SaveThePrincess';
 
-type Screen = 'main-menu' | 'shrink-the-snake';
+type Screen = 'main-menu' | 'save-the-princess';
 
 export function App() {
   const [currentScreen, setCurrentScreen] = useState<Screen>('main-menu');
@@ -410,25 +410,38 @@ export function App() {
             transform: 'translateY(-28px)'
           }}
         >
-          {/* Heading: "Welcome" with cartoon depth and readability */}
-          <h1
-            style={{
-              fontSize: 'clamp(4rem, 9.5vw, 6.8rem)',
-              fontWeight: 900,
-              color: '#FFFFFF',
-              textShadow: '0 8px 0 #0284c7, 0 16px 0 #0369a1, 0 24px 35px rgba(0,0,0,0.35)',
-              letterSpacing: '3px',
-              margin: 0
-            }}
-          >
-            Welcome
-          </h1>
+          {/* Heading: "Save The Princess" with cartoon depth and readability */}
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+            <h1
+              style={{
+                fontSize: 'clamp(3.5rem, 8vw, 5.5rem)',
+                fontWeight: 900,
+                color: '#FFFFFF',
+                textShadow: '0 8px 0 #db2777, 0 16px 0 #9d174d, 0 24px 35px rgba(0,0,0,0.45)',
+                letterSpacing: '3px',
+                margin: 0
+              }}
+            >
+              SAVE THE PRINCESS
+            </h1>
+            <div
+              style={{
+                fontSize: 'clamp(1.5rem, 3.2vw, 2.4rem)',
+                fontWeight: 800,
+                color: '#fde047',
+                textShadow: '0 4px 0 #b45309, 0 8px 16px rgba(0,0,0,0.4)',
+                letterSpacing: '2px'
+              }}
+            >
+              DRAGON OUT! 🐉👑
+            </div>
+          </div>
 
-          {/* PLAY Button -> DIRECTLY launches Shrink the Snake */}
+          {/* PLAY Button -> DIRECTLY launches Save The Princess */}
           <button
             onClick={() => {
               sfx.playPop();
-              setCurrentScreen('shrink-the-snake');
+              setCurrentScreen('save-the-princess');
             }}
             className="btn-3d"
             style={{
@@ -476,10 +489,10 @@ export function App() {
       )}
 
       {/* ========================================================================= */}
-      {/* 2. SHRINK THE SNAKE SCREEN                                                */}
+      {/* 2. SAVE THE PRINCESS: DRAGON OUT SCREEN                                   */}
       {/* ========================================================================= */}
-      {currentScreen === 'shrink-the-snake' && (
-        <ShrinkTheSnake onBack={() => setCurrentScreen('main-menu')} />
+      {currentScreen === 'save-the-princess' && (
+        <SaveThePrincess onBack={() => setCurrentScreen('main-menu')} />
       )}
     </div>
   );
